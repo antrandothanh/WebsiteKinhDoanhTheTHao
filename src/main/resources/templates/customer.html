@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
         integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <!--===============================================================================================-->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../static/css/style.css">
     <!-- Latest compiled and minified CSS -->
     <!--===============================================================================================-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -112,9 +112,8 @@
 </head>
 
 <body onload="time()">
-    <script>
-        swal("Xin Chào Admin", "Chúc Bạn 1 Ngày Tốt Lành Nhé", "");
-    </script>
+<!--kiem tra thu-->
+<!--kiem tra thu 2-->
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -199,8 +198,9 @@
                                                                                 aria-hidden="true"></i></a>
                         <a class="edit" title="Sửa" data-toggle="tooltip"><i class="fa fa-pencil"
                                                                              aria-hidden="true"></i></a>
-                        <a class="delete" title="Xóa" data-toggle="tooltip"><i class="fa fa-trash-o"
-                                                                               aria-hidden="true"></i></a>
+                        <a th:href="@{/delete-customer-account/{id}(id=${customer.id})}"
+                           class="delete" title="Xóa" data-toggle="tooltip"><i
+                                class="fa fa-trash-o" aria-hidden="true"></i></a>
                     </td>
                 </tr>
             </tbody>
