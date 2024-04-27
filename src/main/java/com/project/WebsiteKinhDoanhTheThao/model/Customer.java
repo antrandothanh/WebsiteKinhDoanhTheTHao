@@ -1,11 +1,15 @@
 package com.project.WebsiteKinhDoanhTheThao.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import org.springframework.cglib.core.Local;
 
-import java.util.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 
 @Entity(name = "customers")
 public class Customer {
@@ -17,8 +21,8 @@ public class Customer {
     private String password;
     private String phone;
     private String address;
-    private Date createDate;
-    private Date updateDate;
+    private LocalDate createDate;
+    private LocalDate updateDate;
 
     public long getId() {
         return id;
@@ -68,23 +72,23 @@ public class Customer {
         this.address = address;
     }
 
-    public Date getCreateDate() {
+    public LocalDate getCreateDate() {
         return createDate;
     }
 
-    public void setCreateDate(Date createDate) {
+    public void setCreateDate(LocalDate createDate) {
         this.createDate = createDate;
     }
 
-    public Date getUpdateDate() {
+    public LocalDate getUpdateDate() {
         return updateDate;
     }
 
-    public void setUpdateDate(Date updateDate) {
+    public void setUpdateDate(LocalDate updateDate) {
         this.updateDate = updateDate;
     }
 
-    public Customer(String name, String email, String password, String phone, String address, Date createDate, Date updateDate) {
+    public Customer(String name, String email, String password, String phone, String address, LocalDate createDate, LocalDate updateDate) {
         this.name = name;
         this.email = email;
         this.password = password;
@@ -95,7 +99,7 @@ public class Customer {
     }
 
     // contructor này không có createDate
-    public Customer(String name, String email, String password, String phone, String address, Date updateDate) {
+    public Customer(String name, String email, String password, String phone, String address, LocalDate updateDate) {
         this.name = name;
         this.email = email;
         this.password = password;
@@ -105,5 +109,10 @@ public class Customer {
     }
 
     public Customer() {
+    }
+
+    public void lastUpdateDate() {
+        LocalDate current = LocalDate.now();
+        this.updateDate = current;
     }
 }

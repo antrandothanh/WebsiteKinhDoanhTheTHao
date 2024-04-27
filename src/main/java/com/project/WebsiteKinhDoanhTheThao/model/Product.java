@@ -1,5 +1,6 @@
 package com.project.WebsiteKinhDoanhTheThao.model;
 
+import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 
 @Entity(name = "products")
@@ -12,8 +13,8 @@ public class Product {
     @ManyToOne
     private Category category; //1 sản phẩm có 1 loại. 1 loại có nhiều sản phẩm.
     private String description;
-    @OneToOne
-    private Image image; //mỗi sản phẩm có 1 hình ảnh
+    private String image_location;
+
 
     public long getId() {
         return id;
@@ -55,20 +56,20 @@ public class Product {
         this.description = description;
     }
 
-    public Image getImage() {
-        return image;
+    public String getImage_location() {
+        return image_location;
     }
 
-    public void setImage(Image image) {
-        this.image = image;
+    public void setImage_location(String image_location) {
+        this.image_location = image_location;
     }
 
-    public Product(String productName, long productPrice, Category category, String description, Image image) {
+    public Product(String productName, long productPrice, Category category, String description, String image_location) {
         this.name = productName;
         this.price = productPrice;
         this.category = category;
         this.description = description;
-        this.image = image;
+        this.image_location = image_location;
     }
 
     public Product() {

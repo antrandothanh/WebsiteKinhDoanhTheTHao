@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý tài khoản khách</title>
+    <link th:href="@{/css/TopNavigation.css}" rel="stylesheet">
+    <link th:href="@{/css/Table.css}" rel="stylesheet">
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous">
+</head>
+<body>
+<nav class="topnav">
+    <a href="/management" class="active">TRANG QUẢN LÝ</a>
+    <a href="/customer-account-management">TÀI KHOẢN KHÁCH</a>
+    <a href="/product-management">SẢN PHẨM</a>
+    <a href="#">ĐƠN HÀNG</a>
+</nav>
+<h1>QUẢN LÝ TÀI KHOẢN KHÁCH</h1>
+<a th:href="@{/add-new-customer}"
+   class="btn btn-primary btn-sm mb-3">THÊM TÀI KHOẢN KHÁCH</a>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Tên khách hàng</th>
+        <th>Ngày tạo tài khoản</th>
+        <th>Cập nhật lần cuối</th>
+        <th>Chức năng</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <tr th:each="customer : ${CustomersList}">
+            <td th:text="${customer.id}"></td>
+            <td th:text="${customer.name}"></td>
+            <td th:text="${customer.createDate}"></td>
+            <td th:text="${customer.updateDate}"></td>
+            <td><a th:href="@{/update-customer/{id}(id=${customer.id})}" class="btn btn-primary">XEM CHI TIẾT VÀ SỬA</a>
+                <a th:href="@{/delete-customer-account/{id}(id=${customer.id})}" class="btn btn-danger">XOÁ</a></td>
+            </tr>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
